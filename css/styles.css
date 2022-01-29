@@ -1,0 +1,70 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+h1 {
+    font-family: Chalkduster, fantasy;
+    color: red;
+}
+
+@font-face {
+    font-family: "digital";
+    src: url(digital-7.ttf);
+}
+
+#calcbody {
+    border: 1px solid black;
+    border-radius: 5px;
+    height: 380px;
+    width: 300px;
+    margin: auto;
+    padding: 15px;
+    background-color: #1b5397;
+}
+
+.display {
+    border: 1px solid black;
+    background-color: lightgrey;
+    padding: 10px;
+    text-align: end;
+    font-size: 40px;
+    font-family: "digital";
+}
+
+.operators {
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    gap: 27px;
+}
+
+.button_container {
+    display: flex;
+    margin-top: 20px;
+    gap: 10px;
+    flex: 1;
+    height: 350px;
+}
+
+.number_container {
+    /* border: 1px solid red; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 10px;
+}
+
+button {
+    font-size: 30px;
+    height: 40px;
+    width: 60px;
+    border: none;
+    border-radius: 3px;
+    font-family: inherit;
+}
+
+.operators button {
+    background-color: red;
+    color: white;
+}
