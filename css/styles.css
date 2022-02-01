@@ -1,16 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap");
 * {
     padding: 0;
     margin: 0;
-}
-
-h1 {
-    font-family: Chalkduster, fantasy;
-    color: red;
-}
-
-@font-face {
-    font-family: "digital";
-    src: url(digital-7.ttf);
+    box-sizing: border-box;
+    font-family: "Comic Neue", cursive;
 }
 
 #calcbody {
@@ -21,6 +14,9 @@ h1 {
     margin: auto;
     padding: 15px;
     background-color: #1b5397;
+
+    display: flex;
+    flex-direction: column;
 }
 
 .display {
@@ -29,42 +25,32 @@ h1 {
     padding: 10px;
     text-align: end;
     font-size: 40px;
-    font-family: "digital";
 }
 
-.operators {
-    /* border: 1px solid red; */
-    display: flex;
-    flex-direction: column;
-    gap: 27px;
+.title {
+    font-size: 25px;
+    font-weight: 700;
+    text-align: end;
 }
 
 .button_container {
     display: flex;
-    margin-top: 20px;
+    flex-wrap: wrap;
+    margin-top: 10px;
     gap: 10px;
+
     flex: 1;
-    height: 350px;
 }
 
-.number_container {
-    /* border: 1px solid red; */
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    gap: 10px;
+.operator {
+    color: white;
+    background: red;
 }
 
 button {
     font-size: 30px;
-    height: 40px;
-    width: 60px;
     border: none;
     border-radius: 3px;
     font-family: inherit;
-}
-
-.operators button {
-    background-color: red;
-    color: white;
+    flex: 1 1 21%;
 }
