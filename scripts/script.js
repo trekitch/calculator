@@ -1,25 +1,22 @@
 let operators = "";
+//variable that tracks state of appending to the display
+let appenedToEnd = true;
 
 function addBtnListeners() {
-    let buttons = document.querySelector(".button_container").children;
-    let buttonsArray = Array.from(buttons);
+    const buttons = document.querySelector(".button_container");
+    // let buttonsArray = Array.from(buttons);
 
-    buttonsArray.forEach(function (button) {
-        button.addEventListener("click", function () {
-            if (
-                button.textContent === "=" ||
-                button.textContent === "+" ||
-                button.textContent === "-" ||
-                button.textContent === "/" ||
-                button.textContent === "*"
-            ) {
-                storeOperator(button.textContent);
-            } else {
-                storeOperator(button.textContent);
-                console.log(button.value);
-                updateDisplay(button.textContent);
-            }
-        });
+    // buttonsArray.forEach(function (button) {
+    //     button.addEventListener("click", function () {
+    //         storeOperator(button.textContent);
+    //         console.log(button.value);
+    //         updateDisplay(button);
+    //     });
+    // });
+
+    buttons.addEventListener("click", (e) => {
+        storeOperator(e.target);
+        updateDisplay(e.target);
     });
 }
 
@@ -58,30 +55,37 @@ function operate(operator, x, y) {
     }
 }
 
-function updateDisplay(number) {
+function updateDisplay(btnValue) {
     const displayText = document.querySelector(".display");
-    if (number === "C") {
-        displayText.textContent = "";
-    } else if (
-        displayText.textContent.length > 2 &&
-        (number === "=" || number === "=")
-    ) {
-    }
+    if (btnValue.className === "special" && btnValue.value === "C")
+        return (displayText.textContent = "");
 
-    displayText.textContent = number;
+    if (btnValue.className === "numb") {
+        if (appenedToEnd === true) {
+            displayText.textContent += btnValue.value;
+        } else {
+            displayText.textContent = btnValue.value;
+            appenedToEnd = true;
+        }
+    } else if (btnValue.className === "operator") {
+        appenedToEnd = false;
+    } else {
+        displayText.textContent = btnValue;
+    }
 }
 
 function storeOperator(buttonPressed) {
-    console.log(`Button pressed: ${buttonPressed}`);
-    if (buttonPressed === "=") {
+    console.log(`Button pressed: ${buttonPressed.value}`);
+    if (buttonPressed.className === "special" && buttonPressed.value === "C")
+        return (operators = "");
+
+    if (buttonPressed.value === "=") {
         evaluateExpression(operators);
         operators = evaluateExpression(operators);
         updateDisplay(operators);
-    } else if (buttonPressed === "C") {
-        operators = "";
     } else {
-        operators += buttonPressed;
-        console.log(operators);
+        operators += buttonPressed.value;
+        console.log(`Operators: ${operators}`);
     }
 }
 
@@ -102,7 +106,6 @@ function evaluateExpression(exp) {
         result = operate("/", +expCopy[0], +expCopy[1]);
     }
 
-    console.log(expCopy);
     console.log(`Result: ${result}`);
     return result;
 }
