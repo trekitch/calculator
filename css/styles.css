@@ -6,14 +6,24 @@
     font-family: "Comic Neue", cursive;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url("../imgs/paper.jpg");
+    background-size: cover;
+}
+
 #calcbody {
-    border: 1px solid black;
+    border: 3px solid black;
     border-radius: 5px;
     height: 380px;
     width: 300px;
-    margin: auto;
     padding: 15px;
     background-color: #1b5397;
+    box-shadow: -5px 8px grey;
 
     display: flex;
     flex-direction: column;
@@ -54,4 +64,8 @@ button {
     border-radius: 3px;
     font-family: inherit;
     flex: 1 1 21%;
+}
+
+.disabled {
+    background: darkgrey;
 }
