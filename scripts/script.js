@@ -7,8 +7,6 @@ function addBtnListeners() {
 
     const operatorButtons = document.querySelectorAll(".operator");
 
-    console.log(operatorButtons);
-
     buttons.addEventListener("click", (e) => {
         //if statement that handles misclicks
         if (e.target.value === "." && operators.includes(".")) return;
@@ -17,13 +15,13 @@ function addBtnListeners() {
             e.target.className === "operator" ||
             e.target.className === "special"
         ) {
+            //prevents equals sign from being disabled.
             if (e.target.className === "operator" && e.target.value !== "=") {
                 e.target.classList.add("disabled");
-                console.log(e.target);
                 storeBtnValues(e.target);
                 updateDisplay(e.target);
             } else {
-                console.log(e.target);
+                //once a button is pressed remove the diabled class from operators
                 storeBtnValues(e.target);
                 updateDisplay(e.target);
                 operatorButtons.forEach((button) => {
@@ -107,8 +105,6 @@ function storeBtnValues(btnValue) {
         }
     } else {
         operators.push(btnValue.value);
-
-        console.log(operators);
     }
 }
 
@@ -127,8 +123,6 @@ function evaluateExpression(exp) {
         expCopy = exp.split("/");
         result = operate("/", +expCopy[0], +expCopy[1]);
     }
-
-    console.log(`Result: ${result}`);
 
     operators = [];
     //catches division by 0
