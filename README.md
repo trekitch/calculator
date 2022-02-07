@@ -13,6 +13,7 @@ This project was made as a part of the The Odin Projects curriculum. This is the
 -   Event based style application/removal
 -   Using Flexbox to make a grid-like display
 -   Console and chrome debugging
+-   Event Delegation
 
 ## Technologies Used
 
